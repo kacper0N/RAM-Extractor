@@ -46,7 +46,7 @@ class RedirectionWorker(QThread):
 
 class CommandWorker(QThread):
     output = pyqtSignal(str)
-    finished = pyqtSignal(int)  # exit code
+    finished = pyqtSignal(int)  
 
     def __init__(self, command, cwd=None, parent=None):
         super().__init__(parent)
@@ -159,7 +159,7 @@ class LauncherWindow(QMainWindow):
 
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("RAM-Extractor")  # changed name
+        self.setWindowTitle("RAM-Extractor")  
         self.resize(950, 650)
         self.initUI()
 
@@ -195,7 +195,7 @@ class LauncherWindow(QMainWindow):
         browse_mem_btn.clicked.connect(self.browse_memory_path)
         control_layout.addWidget(browse_mem_btn)
 
-        control_layout.addWidget(QLabel("Folder for results:"))  # changed label
+        control_layout.addWidget(QLabel("Folder for results:"))  
         self.res_path_edit = QLineEdit()
         control_layout.addWidget(self.res_path_edit)
         browse_res_btn = QPushButton("Browse folder")
@@ -226,10 +226,10 @@ class LauncherWindow(QMainWindow):
         control_layout.addSpacing(10)
         control_layout.addWidget(QLabel("Zeroize keys:"))
 
-        self.cb_aes_zero = QCheckBox("AES")      # label cleaned
-        self.cb_rsa_zero = QCheckBox("RSA")      # label cleaned
-        self.cb_serpent_zero = QCheckBox("Serpent")  # label cleaned
-        self.cb_twofish_zero = QCheckBox("Twofish")  # label cleaned
+        self.cb_aes_zero = QCheckBox("AES")      
+        self.cb_rsa_zero = QCheckBox("RSA")      
+        self.cb_serpent_zero = QCheckBox("Serpent")  
+        self.cb_twofish_zero = QCheckBox("Twofish")  
 
         for cb in (self.cb_aes_zero, self.cb_rsa_zero, self.cb_serpent_zero, self.cb_twofish_zero):
             control_layout.addWidget(cb)
@@ -489,7 +489,7 @@ class LauncherWindow(QMainWindow):
 
 # ------------------------------ main ------------------------------------- #
 if __name__ == "__main__":
-    # On some systems running as root, XDG_RUNTIME_DIR may be missing.
+    
     if not os.environ.get("XDG_RUNTIME_DIR"):
         os.environ["XDG_RUNTIME_DIR"] = f"/run/user/{os.geteuid()}"
 
